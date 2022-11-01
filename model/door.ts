@@ -27,6 +27,14 @@ export default class DoorModel{
         return this._isSelected
     }
 
+    set number(number){
+        this._number = number
+    }
+
+    set haveGift(haveGift){
+        this._haveGift = haveGift
+    }
+
     alterateSelect(){
         const isSelected = !this._isSelected
         return new DoorModel(this.number, this.haveGift, isSelected, this._isOpen)
