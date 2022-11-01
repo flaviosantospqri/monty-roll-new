@@ -41,8 +41,14 @@
     align-self: flex-start;
     border: 1px solid black;
 }
-.select{
+.isSelected{
     border-left: 5px solid yellow;
     border-right: 5px solid yellow;
     border-top: 5px solid yellow;
+}
+.isSelected .numero{
+    color: yellow;
+}
+.isSelected .door_handle{
+    background-color: yellow;
 }
