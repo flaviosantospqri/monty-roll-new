@@ -23,6 +23,11 @@ export default class DoorModel{
         return this._isOpen
     }
 
+    get isClosed(){
+        return !this._isOpen
+    }
+
+
     get isSelected(){
         return this._isSelected
     }

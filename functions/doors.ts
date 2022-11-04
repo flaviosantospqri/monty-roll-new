@@ -11,3 +11,15 @@ export function createListDoor(units: number, selected: number): DoorModel[]{
 
     })
 }
+
+export function updateDoors(doors: DoorModel[], doorUpdate: DoorModel){
+    return doors.map(doorInitial => {
+        const equalUpdate = doorInitial.number === doorUpdate.number
+
+        if(equalUpdate){
+            return doorUpdate
+        }else{
+            return doorUpdate.isOpen ? doorInitial : doorInitial.unSelected()
+        }
+    })
+}

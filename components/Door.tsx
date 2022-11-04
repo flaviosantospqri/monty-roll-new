@@ -1,6 +1,7 @@
 
 import styles from "../styles/Door.module.css"
 import DoorModel from "../model/door"
+import Gift from "../components/Gift"
 
 
 interface DoorProps {
@@ -11,21 +12,21 @@ interface DoorProps {
 
 export default function Door(props: DoorProps) {
 
-    const Door = props.value
-    const isSelected = Door.isSelected && !Door.isOpen ? styles.isSelected : ''
+    const door = props.value
+    const isSelected = door.isSelected && !door.isOpen ? styles.isSelected : ''
 
     const alterateSelect = _ => {
-        props.onChange(Door.alterateSelect())
+        props.onChange(door.alterateSelect())
     }
     const open = e => {
         e.stopPropagation()
-        props.onChange(Door.open())
+        props.onChange(door.open())
     }
 
     function renderDoor() {
         return (
             <div className={styles.Door}>
-                <div className={styles.numero}>{Door.number}</div>
+                <div className={styles.numero}>{door.number}</div>
                 <div className={styles.door_handle} onClick={open}></div>
             </div>
         )
@@ -35,7 +36,10 @@ export default function Door(props: DoorProps) {
     return (
         <div className={styles.area} onClick={alterateSelect}>
             <div className={`${styles.frame} ${isSelected}`}>
-                {Door.isOpen ? false : renderDoor()}
+                {door.isClosed ?
+                    renderDoor() : door.haveGift ?
+                        <Gift/> : false
+                }
             </div>
             <div className={styles.floor}></div>
         </div>
