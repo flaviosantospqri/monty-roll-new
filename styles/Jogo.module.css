@@ -1,0 +1,35 @@
+#jogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+#portas{
+    display: flex;
+    flex-wrap: wrap;
+    align-self: stretch;
+    justify-content: space-around;
+}
+#botoes{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#botoes button{
+    background-color: chocolate;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 23px;
+    margin: 10px;
+}
+#botoes button:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+    color: chocolate;
+    transition: 0.5s;
+}

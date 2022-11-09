@@ -1,24 +1,46 @@
-import { useState } from "react";
-import Door from "../components/Door";
+import Card from "../components/Card"
+import EntradaNumerica from "../components/EntradaNumerica"
+import styles from "../styles/Form.module.css"
+import Link from "next/link"
+import { useState } from "react"
 
-import { createListDoor, updateDoors } from "../functions/doors"
 
 export default function Home() {
 
+  const [numberDoors, setNumberDoors] = useState(0)
+  const [whereGift, setwhereGift] = useState(0)
 
-  const [doors, setDoors] = useState(createListDoor(3, 3))
-
-  function renderDors() {
-    return doors.map(door => {
-      return <Door key={door.number} value={door}
-        onChange={newDoor => setDoors(updateDoors(doors, newDoor))} />
-    })
-  }
 
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {renderDors()}
+    <div className={styles.form}>
+      <div>
+        <Card bgcolor="#c0392c">
+          <h2>Monty Roll</h2>
+        </Card>
+
+        <Card>
+          <EntradaNumerica text="Quantidade de Portas" value={numberDoors} onChange={newNumberDoors => setNumberDoors(newNumberDoors)}>
+
+          </EntradaNumerica>
+
+        </Card>
+      </div>
+      <div>
+        <Card>
+          <EntradaNumerica text="Onde está o Presente" value={whereGift} onChange={newWhereGift => setwhereGift(newWhereGift)}>
+
+          </EntradaNumerica>
+        </Card>
+
+        <Card bgcolor="#28a585">
+          <Link href={`/jogo/${numberDoors}/${whereGift}`}>
+            <h2 className={styles.Link}>Iniciar</h2>
+          </Link>
+        </Card>
+
+      </div>
     </div>
+
   )
 }
